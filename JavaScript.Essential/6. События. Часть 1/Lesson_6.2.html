@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_6.2</title>
+    <style>
+        .input-panel {
+            width: 400px;
+            margin: 8px;
+            padding: 2px;
+        }
+
+        .input-panel input {
+            height: 23px;
+            padding-left: 4px;
+            width: 68%;
+        }
+
+        button {
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .output-panel {
+            height: 23px;
+            padding-left: 10px;
+            width: 68%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="input-panel">
+        <p>Введите радиус:</p>
+        <input type="text" id="radius-input">
+             
+    </div>
+    <div class="input-panel">
+        <p>Введите высоту:</p>
+        <input type="text" id="height-input">
+    </div>
+    <button id="calculate">Расчет</button>
+    <div class="output-panel" id="output">Объем цилиндра: </div>
+    <script>
+        /*
+        Задание:
+        Напишите сценарий, который вычисляет объем цилиндра по параметрам, которые вводит пользователь.
+        Для расчета используйте формулу - V=π * r в квадрате * h=π * r в квадрате * h
+        Разместите на странице два поля ввода - первое для радиуса цилиндра, второе для высоты цилиндра.
+        Объем цилиндра выведите в тело страницы.
+        */
+       let calculateButton = document.querySelector("#calculate"); 
+       calculateButton.addEventListener("click", CalculateCylinderVolume);
+
+       function CalculateCylinderVolume()
+       {
+            let radiusInput = document.querySelector("#radius-input");
+            let heightIinput = document.querySelector("#height-input");
+            const radius = +radiusInput.value;
+            const height = +heightIinput.value;
+            let result = Math.PI * Math.pow(radius, 2) * height; 
+            let output = document.querySelector("#output");
+            output.innerHTML += result;
+       }
+       
+
+
+
+    </script>
+</body>
+
+</html>

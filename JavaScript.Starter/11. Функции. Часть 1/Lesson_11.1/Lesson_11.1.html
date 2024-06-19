@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_11.1</title>
+</head>
+<body>
+</body>
+<script>
+    function Sum(a, b)
+    {
+        if (!isNaN(a) && !isNaN(b))
+        {
+            return a + b
+        }
+        else 
+        {
+            return "Невозможно было суммировать значения. Одно из двух или два значения не были числом.";
+        }
+    }
+
+    let a = 3; 
+    let b = 2; 
+    let sum = Sum(a, b);  
+
+    alert(sum);
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_10.2.2</title>
+</head>
+<body>
+    <pre>
+        Задание:
+        Напишите сценарий, который будет запрашивать у пользователя значения, до тех пор, пока тот не введет значение stop
+        Все введенные значения, если они являются числом, должны быть добавлены в массив.
+        После того, как пользователь ввел значение стоп, посчитайте сумму всех значений, которые находятся в массиве.
+    </pre>
+    <script>
+        let values = [];
+        let value;
+        let i = 0;
+
+        do
+        {
+            value = prompt("Введите любое значение или значение 'стоп'", "значение...");
+
+            if (!isNaN(value))
+            {
+                values[i] = Number(value); 
+                i++; 
+            }
+        }
+        while (value != "стоп");
+
+        console.log(values);
+
+        let sum = 0;
+
+        for (const element of values)
+        {
+            sum += element;
+        }
+
+        console.log(sum); 
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+    <pre>
+        Задание:
+        Попросите у пользователя ввести название города. Удалите этот город из элементов массива. 
+        Если города нет в массиве, сообщите об этом пользователю.
+        Выведите массив на экран после удаления элементов.
+    </pre>
+    <script>
+        let cities = ["London", "Paris", "Berlin", "Rome", "Budapest", "Lisbon", "Madrid", "Amsterdam"];
+
+        let city = prompt("Введите любой город (пр. London, Paris, Berlin, Rome, Budapest, Lisbon, Madrid, Amsterdam)", "city"); 
+
+        let index = cities.indexOf(city);
+        
+        if (index < 0)
+        {
+            alert(`${city} - этого города нет в массиве`);
+        }
+        else 
+        {
+            cities.splice(index, 1);
+        }
+
+        console.log(cities);
+    </script>
+</body>
+</html>

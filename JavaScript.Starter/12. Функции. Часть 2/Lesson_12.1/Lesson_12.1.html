@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_12.1</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Создайте одну глобальную переменную с произвольным значением и две функции. 
+    // Продемонстрируйте, что глобальная переменная может использоваться в этих двух функциях.
+
+    let gl = 12; 
+
+    function Sum()
+    {
+        let a = 8; 
+        return gl + a;
+    }
+
+    function Dif()
+    {
+        let b = 2;
+        return gl - b; 
+    }
+
+    alert(`Sum: ${Sum()}`);
+    alert(`Dif: ${Dif()}`);
+</script>
+</html>

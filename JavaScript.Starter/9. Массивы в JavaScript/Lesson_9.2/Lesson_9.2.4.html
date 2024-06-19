@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_9.2.4</title>
+</head>
+<body>
+    <pre>
+        Задание:
+        Дан массив. Создайте на основе значений этого массива два новых массива. В один массив поместите все четные значения, а во второй все нечетные.
+        Выведите на экран значения, которые вошли в первый массив и во второй массив.
+    </pre>
+    <script>
+        let values = [10, 20, 5, 7, 11, 8, 125, 4, 8, 3, 23];
+
+        let oddValues = [];
+        let evenValues = [];
+
+        let i = 0;
+        while (i < values.length)
+        {
+            let j = 0;
+            let k = 0;
+
+            for (const element of values)
+            {
+                if (element % 2 != 0)
+                {1
+                    oddValues[j] = element;
+                    j++;
+                }
+                else 
+                {
+                    evenValues[k] = element;
+                    k++; 
+                }
+                i++;
+            }
+        }
+
+        console.log(oddValues);
+        console.log(evenValues);
+    </script>
+</body>
+</html>

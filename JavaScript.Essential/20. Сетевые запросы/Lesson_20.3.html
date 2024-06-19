@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_20.3</title>
+</head>
+
+<body>
+    <button id="showBtn">SHOW</button>
+    <hr>
+    <div id="img"></div>
+    <script>
+        /*
+        Задание:
+        Напишите сценарий, который при загрузке страницы выполнит GET запрос на https://jsonplaceholder.typicode.com/photos
+        и выведет на странице все изображения в виде <img>, которые будут получены в ответе.
+        */
+        
+        
+        // let url = "https://jsonplaceholder.typicode.com/photos";
+        // let promise = fetch(url);
+        // console.log(promise); 
+
+        // document.querySelector("#showBtn").addEventListener("click", function () {
+        //     promise
+        //         .then(response => response.json(), error => console.error(errro.message))
+        //         .then(json => renderImageLibrary(json));
+        // })
+        
+        // function renderImageLibrary(photos) {
+        //     let docFragment = document.createDocumentFragment();
+
+        //     photos.forEach(photo => {
+        //         let img = document.createElement("img");
+        //         img.src = photo.thumbnailUrl;
+        //         docFragment.append(img);
+        //     });
+
+        //     document.querySelector("#img").append(docFragment);
+        // }
+
+        let url = "https://jsonplaceholder.typicode.com/photos";
+        let imageURLs = [];
+        let promise = fetch(url);
+
+        document.querySelector("#showBtn").addEventListener("click", function () {
+            promise
+                .then(response => response.json())
+                .then(response => GetImageUrls(response, imageURLs))
+                .then(response => AddImagesToDoc(imageURLs)) 
+        })
+
+        function AddImagesToDoc(array) {
+            let docFragment = document.createDocumentFragment();
+
+            array.forEach(element => {
+                let img = document.createElement("img"); 
+                img.src = element;
+                docFragment.append(img);
+            })
+
+            document.querySelector("#img").append(docFragment);
+        }
+
+        function GetImageUrls(data, array) {  
+            data.forEach(element => {
+                let url = element.thumbnailUrl; 
+                array.push(url); 
+            }); 
+            console.log(array); 
+        }
+    </script>
+</body>
+
+</html>

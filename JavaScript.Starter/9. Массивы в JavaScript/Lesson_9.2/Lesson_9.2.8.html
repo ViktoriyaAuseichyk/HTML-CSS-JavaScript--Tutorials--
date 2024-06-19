@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_9.2.8</title>
+</head>
+<body>
+    <pre>
+        Задание:
+        Дан массив целых чисел. Проверьте есть ли в нем одинаковые элементы. Если есть выведите их на экран.
+    </pre>
+    <script>
+        let values = [10, 20, 4, 6, 11, 9, 125, 10, 8, 0, 3, 5, 89, 12, 46, 77, 3];
+
+        for (let i = 0; i < values.length; i++)
+        {
+            for (let j = i + 1; j < values.length; j++)
+            {
+                values[i] == values[j]
+                
+                if (values[i] == values[j])
+                {
+                    if (i != j)
+                    {
+                        console.log(`Значение под индексом ${i} = ${values[i]} совпадает со значением под индесом ${j} = ${values[j]}`); 
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

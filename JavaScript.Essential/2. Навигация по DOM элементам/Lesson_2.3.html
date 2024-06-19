@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_2.3</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        td, th {
+            padding: 8px;
+        }
+        #result {
+            padding: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <table id="statsTable">
+        <tr>
+            <th>Месяц</th>
+            <th>Отдел 1</th>
+            <th>Отдел 2</th>
+        </tr>
+        <tr>
+            <td>Январь</td>
+            <td>50</td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td>Февраль</td>
+            <td>60</td>
+            <td>140</td>
+        </tr>
+        <tr>
+            <td>Март</td>
+            <td>125</td>
+            <td>115</td>
+        </tr>
+        <tr>
+            <td>Апрель</td>
+            <td>87</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Март</td>
+            <td>95</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>Июнь</td>
+            <td>115</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>Июль</td>
+            <td>125</td>
+            <td>100</td>
+        </tr>
+    </table>
+
+    <div id="result"></div>
+
+    <script>
+        /*
+        Задание:
+        Добавьте строку "Итого" для таблицы statsTable. 1Напишите сценарий, которым выведите во вторую ячейку этой строки сумму всех числовых значений второй колонки.
+        Выведите в третью ячейку этой строки сумму всех числовых значений из третьей колонки таблицы.
+        В div с id result выведите сообщение "Отдел 1 сделал больше продаж" или "Отдел 2 сделал больше продаж" на основе раннее вычисленных значений в строке "Итого".
+        Используйте любые методы, которые были рассмотрены на в прошлых уроках.
+        */
+        function GetSum(columns)
+        {
+            let sum = 0; 
+            for (const item of columns)
+            {
+                sum += +item.textContent; 
+            }   
+            return sum;
+        }
+
+        let statsTableTable = document.querySelector("#statsTable");
+        let firstColumn = statsTableTable.querySelectorAll("tr>td:nth-child(2)");
+        let sumFirstColumn = GetSum(firstColumn); 
+        let secondColumn = statsTableTable.querySelectorAll("tr>td:nth-child(3)");
+        let sumSecondColumn = GetSum(secondColumn); 
+
+        let tbody = document.querySelector("tbody");
+        let tr = document.createElement("tr");
+        tbody.append(tr);
+        let tbodyLastChild = document.querySelector("tbody:last-child");
+        let td_1 = document.createElement("td");
+        td_1.innerHTML = "Итого:";
+        tbodyLastChild.append(td_1);
+        let td_2 = document.createElement("td");
+        td_2.innerHTML = `${sumFirstColumn}`;
+        tbodyLastChild.append(td_2);
+        let td_3 = document.createElement("td");
+        td_3.innerHTML = `${sumSecondColumn}`;
+        tbodyLastChild.append(td_3);
+ 
+        let divElement = document.querySelector("#result");
+        if (sumFirstColumn > sumSecondColumn)
+        {
+            divElement.innerHTML = "Первый отдел сделал больше продаж";
+        }
+        {
+            divElement.innerHTML = "Второй отдел сделал больше продаж";
+        }
+    </script>
+</body>
+</html>

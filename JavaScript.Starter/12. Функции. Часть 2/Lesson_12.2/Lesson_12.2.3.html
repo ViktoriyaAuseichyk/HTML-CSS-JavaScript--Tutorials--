@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_12.2.3</title>
+</head>
+
+<body>
+    <pre>
+        Задание:
+        Замените в коде все функции-выражения на стрелочные функции.
+    </pre>
+    <script>
+        var data = [1, 2, 3, 4, 5];
+        // map - обходит все элементы массива и возвращает новый массив со значениями, которые вернула указанная функция.
+        var result = data.map(value => value * value);
+        // forEach - обход всех элементов массива и запуск определенной функции для каждого элемента.
+        result.forEach(e => console.log(e));
+    </script>
+</body>
+
+</html>

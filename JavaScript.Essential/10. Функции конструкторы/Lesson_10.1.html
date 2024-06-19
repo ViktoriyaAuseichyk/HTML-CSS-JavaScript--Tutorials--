@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_10.1</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Задание:
+        Выполните рефакторинг кода. Сделайте так, чтобы объекты создавались не через литералы, а через функцию конструктор.
+        */
+
+        function User(firstName, lastName)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+        User.prototype.show = function () 
+        {
+            console.log(this.firstName + " " + this.lastName);
+        }
+
+        let user_1 = new User("Ivan", "Ivanov"); 
+        let user_2 = new User("Olga", "Petrova");
+
+        user_1.show();
+        user_2.show();
+    </script>
+</body>
+
+</html>

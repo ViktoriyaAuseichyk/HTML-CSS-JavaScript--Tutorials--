@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_17.2</title>
+</head>
+
+<body>
+    <textarea rows="10" cols="30"></textarea>
+    <div>
+        <input id="saveButton" type="button" value="Save" />
+        <input id="deleteButton" type="button" value="Delete" />
+    </div>
+    
+    <script>
+        /*
+        Задание:
+        Сделайте так чтобы значение, введенное в поле ввода на данной странице, сохранялось при каждом изменении.
+        Когда пользователь повторно зайдет на эту страницу, поле ввода должно содержать последнее введенное значение.
+        */
+        function setCookie(name, value) {
+            let encodedValue = encodeURIComponent(value);
+            document.cookie = `${name}=${value};`; 
+        }
+
+        function getCookie(name) {
+            let cookie = document.cookie;
+            console.log(`Cookie: ${cookie}`);  
+            let position = cookie.indexOf(`${name}=`);
+            console.log(`Position: ${position}`); 
+
+            if (position != -1) {
+                let start = position + name.length + 1; 
+                console.log(`Start: ${start}`);
+                let end = cookie.indexOf(";", start); 
+                console.log(`End: ${end}`);
+                
+                if (end == -1)
+                {
+                    end = cookie.length; 
+                    console.log(`End -1: ${end}`);
+                }
+
+                let value = cookie.substring(start, end); 
+                console.log(`Value: ${value}`); 
+
+                return decodeURIComponent(value); 
+            }
+        }
+
+        function deleteCookie(name) {
+            document.cookie = `${name}=; max-age=0;`;
+        }
+
+        let textArea = document.querySelector("textarea");
+        
+        document.querySelector("#saveButton").addEventListener("click", function() {
+            let message = textArea.value;
+            console.log(`Message: ${message}`); 
+            setCookie("content", message);
+        })
+
+        document.querySelector("#deleteButton").addEventListener("click", function() {
+            deleteCookie("content");
+        })
+
+        document.addEventListener("DOMContentLoaded", function () {
+            message = getCookie("content");
+            textArea.textContent = message; 
+        })
+
+        setCookie("check", 123); 
+        getCookie("check"); 
+        //deleteCookie("check"); 
+
+        setCookie("hey", 456); 
+        getCookie("hey"); 
+        
+    </script>
+</body>
+
+</html>

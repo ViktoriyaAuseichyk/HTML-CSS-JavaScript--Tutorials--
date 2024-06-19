@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_14.5</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Задание:
+        Перепишите класс Numbers, используя шаблон "модуль".
+        Поля values и threshold должны быть закрыты в модуле и сохраняться в замыкании.
+        getGreaterThanThreshold и getLessThanThreshold должны быть открытыми частями модуля.
+
+        На практике, использование классов более предпочтительно, за исключением ситуаций,
+        когда процесс разработки и целевая среда выполнения не дает возможность использовать 
+        ключевое солово class
+        */
+
+        let numbers = (function () { 
+            
+            // закрытые члены модуля
+            let values;
+            let threshold;
+
+            // открытые члены модуля
+            return {
+                setValues: function(value) {
+                   return values = value;
+                },
+                setThreshold: function(value) {
+                    return threshold = value;
+                },
+                // возвращает все значения из массива values, которые меньше, чем значение переменной threshold 
+                getGreaterThanThreshold: function()
+                {
+                    return values.filter(v => v > threshold);
+                },
+                // Возвращает все значения из массива values, которые больше, чем значение переменной threshold 
+                getLessThanThreshold: function() 
+                {
+                    return values.filter(v => v < threshold);
+                }
+            }     
+        }());
+
+        numbers.setValues([10, 20, 23, 11, 5, 6, 90, 33, 45, 67]);
+        numbers.setThreshold(50);
+        let gt = numbers.getGreaterThanThreshold();
+        let lt = numbers.getLessThanThreshold();
+
+        console.log(gt);
+        console.log(lt);
+    </script>
+</body>
+
+</html>

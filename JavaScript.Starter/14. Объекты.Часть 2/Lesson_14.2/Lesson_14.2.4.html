@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_14.2.4</title>
+</head>
+<body>
+    <pre>
+        Задание:
+        Перепишите код. Сделайте фабричный метод, который будет принимать два параметра firstName и lastName и создавать объект с двумя свойствами firstName и lastName.
+        Сделайте так, чтобы функция print стала методом объекта, который создается через фабричную функцию.
+        Используйте shorthand методы и shorthand свойства.        
+    </pre>
+    <script>
+        function AddObj(firstName, lastName)
+        {
+            return {
+                firstName: firstName,
+                lastName: lastName,
+
+                Print() {
+                    console.log("First Name: " + this.firstName);
+                    console.log("Last Name: " + this.lastName);
+                }
+            }
+
+            
+        }
+
+        let obj_1 = AddObj("Ivan", "Ivanov");
+        let obj_2 = AddObj("Jhon", "Doe"); 
+        obj_1.Print(); 
+        obj_2.Print();
+    </script>
+</body>
+</html>

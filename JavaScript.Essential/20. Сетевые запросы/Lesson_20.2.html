@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson_20.2</title>
+</head>
+
+<body>
+    <form>
+        <hr>
+        <label>Title</label>
+        <input type="text" id="title">
+        <hr>
+        <label>Body</label>
+        <input type="text" id="body">
+        <hr>
+        <input type="button" id="saveBtn" value="SAVE"> 
+        <br>
+        <hr>
+        <textarea name="outputUserInfo" id="outputUserInfo" cols="50" rows="7"></textarea>
+        <br>
+        <hr>
+        <input type="button" id="getBtn" value="GET">
+        <input type="button" id="putBtn" value="PUT">
+    </form>
+
+    <script>
+        /*
+        Задание:
+        Напишите сценарий, который будет обновлять сущность post со свойствами
+        id: 1,
+        title: 'foo',
+        body: 'bar',
+        userId: 1,
+
+        Создайте форму с полем ввода для значения свойства title и полем ввода для значения свойства body
+
+        Значения для свойств title и body получите от пользователя
+        Значения id и userId должны остаться равными 1 и выводить их в форме не нужно.
+        При загрузке сценария заполните форму данными получеными при обработке GET запроса на https://jsonplaceholder.typicode.com/posts/1
+
+        адрес для отправки запроса
+        https://jsonplaceholder.typicode.com/posts/1
+
+        для обновления сущности воспользуйтесь PUT запросом https://jsonplaceholder.typicode.com/posts/1. Обработайте ответ
+        и выведите информацию о ошибке или об успешно завершенной операции.
+        */
+
+        let user = {
+            id: 1,
+            title: 'foo',
+            body: 'bar',
+            userId: 1
+        }
+
+        let form = document.forms[0]; 
+        let outputUserInfo = form.querySelector("#outputUserInfo"); 
+        let url = "https://jsonplaceholder.typicode.com/posts/1";
+
+
+        form.querySelector("#saveBtn").addEventListener("click", function () {
+            let title = form.querySelector("#title"); 
+            let body = form.querySelector("#body");
+
+            user.title = title.value; 
+            user.body = body.value;
+
+            outputUserInfo.value = "";
+            outputUserInfo.value = `USER: \nID : ${user.id}\nUserID : ${user.userId}\nTitle : ${user.title}\nBody : ${user.body}`;
+
+            title.value = ""; 
+            body.value = "";
+
+            form.querySelector("#getBtn").addEventListener("click", function () {
+                fetch(url)
+                    .then(response => response.json()) 
+                    .then(json => {
+                        outputUserInfo.value += `\n\nJSON: \nID : ${json.id}\nUserID : ${json.userId}\nTitle : ${json.title}\nBody : ${json.body}`;
+                    });
+            });
+
+            form.querySelector("#putBtn").addEventListener("click", function () {
+                fetch(url, {
+                    method: "PUT",
+                    body: JSON.stringify(user)
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log(response.json());
+                            alert("Данные сохранены");
+                        }
+                        else {
+                            console.error("Ошибка во время обработки запроса (status code " + response.status + ")");
+                        }
+                    })
+            });
+        });
+
+        
+
+        
+
+
+
+    </script>
+</body>
+
+</html>
